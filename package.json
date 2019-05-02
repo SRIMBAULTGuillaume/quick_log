@@ -1,0 +1,122 @@
+{
+	"name": "quick-log",
+	"displayName": "quick_log",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:quicklog.log",
+		"onCommand:quicklog.copyLog"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Quick log",
+				"properties": {
+					"quicklog.languageConf": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"title": "languages",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Id of the language"
+								},
+								"format": {
+									"type": "string",
+									"description": "Format of the log string"
+								},
+								"startFunction": {
+									"type": "string",
+									"description": "Character starting a new function"
+								}
+							}
+						},
+						"default": [
+							{
+								"id": "python",
+								"format": "print('{w}: ', {w})",
+								"startFunction": ":"
+							},
+							{
+								"id": "javascript",
+								"format": "console.log(`{w}: ${{w}}`);",
+								"startFunction": "{"
+							},
+							{
+								"id": "c",
+								"format": "printf(\"{w}: %d\", {w});",
+								"startFunction": "{"
+							},
+							{
+								"id": "cpp",
+								"format": "cout << \"{w}: \"<< {w} << endl;",
+								"startFunction": "{"
+							},
+							{
+								"id": "java",
+								"format": "System.out.println(\"{w}: \" + {w});",
+								"startFunction": "{"
+							},
+							{
+								"id": "csharp",
+								"format": "Console.WriteLine(\"{w}: \" + {w});",
+								"startFunction": "{"
+							},
+							{
+								"id": "go",
+								"format": "fmt.Printf(\"{w}: %#v\", {w})",
+								"startFunction": "{"
+							}
+						]
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "quicklog.log",
+				"title": "QuickLog: Print the current selected variable"
+			},
+			{
+				"command": "quicklog.copyLog",
+				"title": "QuickLog: Copy the log line to your clipboard"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "quicklog.log",
+				"key": "ctrl+alt+l",
+				"mac": "cmd+alt+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "quicklog.copyLog",
+				"key": "ctrl+shift+alt+l",
+				"mac": "cmd+shift+alt+l",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+		"clipboardy": "^2.0.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
