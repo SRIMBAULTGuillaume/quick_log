@@ -1,8 +1,13 @@
 {
 	"name": "quick-log",
-	"displayName": "quick_log",
-	"description": "",
-	"version": "0.0.1",
+	"displayName": "Quick Log",
+	"description": "Print log message depending of the file's language.",
+	"version": "0.1.1",
+	"publisher": "guillaumeSRIMBAULT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SRIMBAULTGuillaume/quick_log"
+	},
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -74,6 +79,16 @@
 								"id": "go",
 								"format": "fmt.Printf(\"{w}: %#v\", {w})",
 								"startFunction": "{"
+							},
+							{
+								"id": "elixir",
+								"format": "IO.puts(\"{w}: #{{w}}\")",
+								"startFunction": "do"
+							},
+							{
+								"id": "fsharp",
+								"format": "printfn \"{w}: \" :: {w}",
+								"startFunction": "="
 							}
 						]
 					}
