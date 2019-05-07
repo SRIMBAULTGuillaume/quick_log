@@ -9,6 +9,7 @@ os:
 branches:
   only:
     - master
+    - /^v.*$/
 
 install:
   - npm install -g vsce
