@@ -25,14 +25,26 @@ This extension support multiples languages. There are currently supported langua
 - c (partial support)
 - c++
 - c#
+- elixir (partial support)
+- f# (partial support)
+- go
 - java
 - javascript
+- lua (partial support)
 - python
-- go
-- elixir (partial support)
-- fsharp (partial support)
+- r
+- ruby (partial support)
+- scala
+
+You can modify the settings to add/modify a language.
 
 Todo-list:
-- Add support for two (or more) way to start a function.
+- Add support for two (or more) way to start a function & support for regex.
 - Add new languages
 - Add full support for c language (the log line depend of the type of the variable)
+
+Change-Log:
+
+- 07/05/2019 - v0.1.3: Add travis.ci
+- 06/05/2019 - v0.1.2: Add readme
+- 04/05/2019 - v0.1.1: Inital release

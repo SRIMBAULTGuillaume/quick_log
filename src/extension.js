@@ -3,6 +3,10 @@ const vscode = require('vscode');
 const fs = require("fs");
 const clipboardy = require("clipboardy");
 
+const notSupportedMsg = `
+	The current language of the file is currently unsupported. 
+	You add add it manually or create a pull request on github.com/SRIMBAULTGuillaume/quick_log`;
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -27,12 +31,19 @@ let activate = context => {
 			.get('languageConf')
 			.find(e => e.id == doc.languageId);
 
+		if (!languageConf) {
+			vscode.window.showInformationMessage(notSupportedMsg);
+			return;
+		}
+
 		var str = addSpaces(
 			constructString(word, languageConf), 
 			doc, 
 			selectedLine, 
 			tabSize, 
 			languageConf.startFunction);
+
+		
 
 		editor.edit(edit => {
 			// If it's the last line
@@ -69,6 +80,11 @@ let activate = context => {
 		var languageConf = conf.get('languageConf')
 
 		languageConf = languageConf.find(e => e.id == doc.languageId);
+
+		if (!languageConf) {
+			vscode.window.showInformationMessage(notSupportedMsg);
+			return;
+		}
 
 		clipboardy.writeSync(constructString(word, languageConf));
 	});
@@ -110,27 +126,6 @@ const constructString = function(variable, conf){
 	var str = conf.format.replace(/{w}/g, variable);
 
 	return `${str}`;
-}
-
-const getSpaces = function(doc, line, tabSize, conf){
-	var charsInLine = doc.lineAt(line).text.split('');
-
-	let nbSpace = 0;
-	for (const e of charsInLine){
-		if (e === ' ')
-			nbSpace++;
-		else if (e === '\t')
-			nbSpace += tabSize;
-		else
-			break;
-	}
-
-	// Testing if a tab is needed (to indent the text)
-	let regex = new RegExp(startFunction + "$");
-	if (regex.test(doc.lineAt(line).text))
-		nbSpace += tabSize;
-
-	return " ".repeat(nbSpace);
 }
 
 const getWord = function(editor){

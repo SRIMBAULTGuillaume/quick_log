@@ -2,7 +2,7 @@
 	"name": "quick-log",
 	"displayName": "Quick Log",
 	"description": "Print log message depending of the file's language.",
-	"version": "0.1.1",
+	"version": "0.1.3",
 	"publisher": "guillaumeSRIMBAULT",
 	"repository": {
 		"type": "git",
@@ -46,49 +46,57 @@
 						},
 						"default": [
 							{
-								"id": "python",
-								"format": "print('{w}: ', {w})",
-								"startFunction": ":"
-							},
-							{
-								"id": "javascript",
-								"format": "console.log(`{w}: ${{w}}`);",
-								"startFunction": "{"
-							},
-							{
 								"id": "c",
 								"format": "printf(\"{w}: %d\", {w});",
 								"startFunction": "{"
-							},
-							{
+							},{
 								"id": "cpp",
 								"format": "cout << \"{w}: \"<< {w} << endl;",
 								"startFunction": "{"
-							},
-							{
-								"id": "java",
-								"format": "System.out.println(\"{w}: \" + {w});",
-								"startFunction": "{"
-							},
-							{
+							},{
 								"id": "csharp",
 								"format": "Console.WriteLine(\"{w}: \" + {w});",
 								"startFunction": "{"
-							},
-							{
-								"id": "go",
-								"format": "fmt.Printf(\"{w}: %#v\", {w})",
-								"startFunction": "{"
-							},
-							{
+							},{
 								"id": "elixir",
 								"format": "IO.puts(\"{w}: #{{w}}\")",
 								"startFunction": "do"
-							},
-							{
+							},{
 								"id": "fsharp",
 								"format": "printfn \"{w}: \" :: {w}",
 								"startFunction": "="
+							},{
+								"id": "go",
+								"format": "fmt.Printf(\"{w}: %#v\", {w})",
+								"startFunction": "{"
+							},{
+								"id": "java",
+								"format": "System.out.println(\"{w}: \" + {w});",
+								"startFunction": "{"
+							},{
+								"id": "javascript",
+								"format": "console.log(`{w}: ${{w}}`);",
+								"startFunction": "{"
+							},{
+								"id": "lua",
+								"format": "io.write(\"{w}: \" .. {w})",
+								"startFunction": "then"
+							},{
+								"id": "python",
+								"format": "print('{w}: ', {w})",
+								"startFunction": ":"
+							},{
+								"id": "r",
+								"format": "cat(\"{w}: \", {w})",
+								"startFunction": "{"
+							},{
+								"id": "ruby",
+								"format": "puts \"{w}: #{{w}\"",
+								"startFunction": "{"
+							},{
+								"id": "scala",
+								"format": "print(\"{w}: \" + {w});",
+								"startFunction": "{"
 							}
 						]
 					}

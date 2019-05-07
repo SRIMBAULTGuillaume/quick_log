@@ -1,0 +1,35 @@
+language: node_js
+
+node_js:
+  - 11
+
+os:
+  - linux
+
+branches:
+  only:
+    - master
+
+install:
+  - npm install -g vsce
+  - npm install
+  
+script:
+  - vsce package
+
+# VS_TOKEN & GIT_TOKEN is in the project settings
+deploy:
+  # Deploy to github release
+  - provider: releases
+    api_key: $GIT_TOKEN
+    file_glob: true
+    file: "*.vsix"
+    skip_cleanup: true
+    on:
+      tags: true
+  # Deploy to VS code marketplace
+  - provier: script
+    script: vsce publish -p $VS_TOKEN --packagePath *.vsix
+    skip_cleanup: true
+    on:
+      tags: true
