@@ -144,3 +144,6 @@ const getWord = function(editor){
 
 	return word;
 }
+
+const useless = function () {
+}
