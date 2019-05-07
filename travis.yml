@@ -6,11 +6,6 @@ node_js:
 os:
   - linux
 
-branches:
-  only:
-    - master
-    - /^v.*$/
-
 install:
   - npm install -g vsce
   - npm install
