@@ -6,6 +6,10 @@ node_js:
 os:
   - linux
 
+branches:
+  only:
+    /^v.*$/
+
 install:
   - npm install -g vsce
   - npm install
@@ -28,9 +32,6 @@ deploy:
     script: vsce publish -p $VS_TOKEN --packagePath *.vsix
     skip_cleanup: true
     on:
-      branches:
-        only:
-          /^v.*$/
       tags: true
 
       
