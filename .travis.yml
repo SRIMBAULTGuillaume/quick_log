@@ -28,7 +28,9 @@ deploy:
     script: vsce publish -p $VS_TOKEN --packagePath *.vsix
     skip_cleanup: true
     on:
-      all_branches: true
+      branches:
+        only:
+          master
       tags: true
 
       
